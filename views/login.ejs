@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="../public/css/login.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+</head>
+
+<body  class="home-bg">
+    <div>
+        
+                <nav class="navbar navbar-expand-lg navbar-light bar-bg fixed-top">
+                    <div class="container">
+                        <a class="navbar-brand" href="homepage.ejs">
+                           <h1 class="brand"><span style="color: red;">Stay</span><span style="color: royalblue;">Spot</span></h1>
+                        </a>
+                        <button style="background-color:#fff;" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                            <div style="  padding: 10px;" class="navbar-nav">
+                                <a class="nav-link active " id="navItem1" href="homepage.ejs">
+                                    <span style=" padding-left: 10px;padding-right: 10px; color:#fff; font-family:Roboto; font-weight:600; font-size: 18px;">Home</span>
+                                    <span class=" sr-only">(current)</span>
+                                </a>
+                                <a style=" padding-left: 10px; padding-right: 10px;  color:#fff; font-family:Roboto; font-size: 18px; font-weight:600;" class="nav-link" href="#exploreMenuSection" id="navItem2">My Reserves</a>
+                                <a style="padding-left: 10px; padding-right: 10px;  color:#fff; font-family:Roboto; font-size: 18px; font-weight:600;" class="nav-link" href="#deliveryPaymentSection" id="navItem3">Search</a>
+                                <a style="padding-left: 10px;padding-right: 10px;  color:#fff; font-family:Roboto; font-size: 18px; font-weight:600;" class="nav-link" href="login.ejs" id="navItem4">Login</a>
+                                <a style="padding-left: 10px; padding-right: 10px; color:#fff; font-family:Roboto; font-size: 18px; font-weight:600;" class="nav-link" href="contactus.ejs" id="navItem4">Contacts us</a>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            
+    </div>
+    <div class="From-box">
+        <form class="Login-form">
+            <h1>Login</h1>
+            <div class="input-box">
+                <input type="text" required>
+                <label>Email</label>
+                <ion-icon name="mail-outline"></ion-icon>
+            </div>
+            <div class="input-box">
+                <input type="password" required>
+                <label>Password</label>
+                <ion-icon name="lock-closed-outline"></ion-icon>
+            </div>
+            <div class="checkbox">
+                <span>
+                    <input type="checkbox" id="login-checkbox">
+                    <label for="login-checkbox">Remember Me</label>
+                </span>
+                <h5>Forget password ?</h5>
+            </div>
+            <button type="submit" class="submit-btn">Submit</button>
+            <h5 class="Register-btn">Don't have an account ? Register</h5>
+        </form>
+
+        <form class="Register-form">
+            <h1>Sign Up</h1>
+            <div class="input-box">
+                <input type="text" required>
+                <label>Username</label>
+                <ion-icon name="person-outline"></ion-icon>
+            </div>
+            <div class="input-box">
+                <input type="text" required>
+                <label>Email</label>
+                <ion-icon name="mail-outline"></ion-icon>
+            </div>
+            <div class="input-box">
+                <input type="password" required>
+                <label>Password</label>
+                <ion-icon name="lock-closed-outline"></ion-icon>
+            </div>
+            <div class="checkbox">
+                <span>
+                    <input type="checkbox" id="register-checkbox">
+                    <label for="login-register">I agree to the terms & conditons</label>
+                </span>
+            </div>
+            <button type="submit" class="submit-btn">Submit</button>
+            <h5 class="Login-btn">Registered before ? Login</h5>
+        </form>
+    </div>
+
+    <script src="../public/js/login.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+</body>
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</html>

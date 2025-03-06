@@ -1,0 +1,79 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Bree+Serif&family=Caveat:wght@400;700&family=Lobster&family=Monoton&family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display+SC:ital,wght@0,400;0,700;1,700&family=Playfair+Display:ital,wght@0,400;0,700;1,700&family=Roboto:ital,wght@0,400;0,700;1,400;1,700&family=Source+Sans+Pro:ital,wght@0,400;0,700;1,700&family=Work+Sans:ital,wght@0,400;0,700;1,700&display=swap');
+.home-bg{
+    background-image: url("../resource/homewallpaper.jpg");
+    background-size:cover;
+    
+    
+}
+.para{
+    
+    font-family: sans-serif;
+    line-height: 1.5;
+    color: black;
+    text-align: center;
+}
+.bar-bg {
+    background-color: black; 
+    height: 80px; 
+    z-index: 1000; 
+}
+.brand{
+    font-size: 48px;
+    font-family: 'Playfair Display', serif;
+    font-weight: bolder;
+
+}
+
+
+
+/* Button default styling */
+.search-btn {
+        padding-right: 30px;
+        padding-left: 30px;
+        height: 50px;
+        width: 150px;
+        background-color: #fff;
+        font-weight: 700;
+        border-radius: 30px;
+        border-color: royalblue;
+        border-width: 3px;
+        
+        
+    }
+.logic-btn{
+    padding-right: 30px;
+    padding-left: 30px;
+    height: 50px;
+    width: 150px;
+    background-color:  #fff;
+    font-weight: 700;
+    border-radius: 30px;
+    border-color: red;
+    border-width: 3px;
+}
+
+
+
+/* Hover effects for swapping colors */
+.search-btn:hover {
+    background-color: royalblue; /* On hover, change to blue */
+}
+
+.logic-btn:hover {
+    background-color: red; /* On hover, change to red */
+}
+
+.navbar {
+    background-color: black
+}
+.navbar-nav{
+    background-color    : black;
+    border-radius: 10px;
+    
+}
+
+.navbar-nav .nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.2); 
+    border-radius: 5px; 
+}
