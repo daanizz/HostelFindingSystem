@@ -32,15 +32,7 @@
     border-radius: 50px;
     margin-top: 30px;
     height: 400px; /* Set a fixed height */
-    object-fit: cover; /* Maintain aspect ratio and cover area */
-}
-.search-btn:hover {
-    background-color: royalblue; /* On hover, change to blue */
-}
-
-.logic-btn:hover {
-    background-color: red; /* On hover, change to red */
-}
+    object-fit: cover; /* Maintain aspect ratio and cover area */}
 
 .navbar {
     background-color: black
@@ -61,12 +53,158 @@ body{
 
 
 
-
-/* Hover effects for swapping colors */
-.search-btn:hover {
-background-color: royalblue; /* On hover, change to blue */
+/*annex*/
+.heading {
+    color: #102a42;
+    font-family: "Roboto";
+    font-weight: bold;
 }
 
-.logic-btn:hover {
-background-color: red; /* On hover, change to red */
+.description {
+    font-family: "Roboto";
+    color:#fff;
 }
+
+button,li,p, h1, h2, h3, h4, h5, h6 {
+    user-select: none; /* Prevents text selection */
+    outline: none;     
+}
+
+
+.button {
+    background-color: #dae2ec;
+    font-family: "Roboto";
+    font-size: 18px;
+    width: 33%;
+    border-width: 0;
+    border-radius: 8px;
+}
+button:focus {
+    outline: none;
+}
+
+.selected-button {
+    background-color: red;
+    width: 33%;
+}
+
+
+
+.tab-content {
+    color: #fff;
+    font-family: "Roboto";
+    font-size: 15px;    
+}
+.tabs-container {
+    border: 2px solid #fff;
+    border-top: none;
+    height: 300px;
+    margin-bottom: 150px;
+}
+
+.todos-bg-container {
+  background-color: black;
+  height: 100vh;
+}
+
+.todos-heading {
+  text-align: center;
+  color:#fff;
+  font-family: "Roboto";
+  font-size: 46px;
+  font-weight: 700;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.create-task-heading {
+  font-family: "Roboto";
+  font-size: 32px;
+  font-weight: 700;
+  color:#fff;
+}
+
+.create-task-heading-subpart {
+  font-family: "Roboto";
+  font-size: 32px;
+  color:#fff;
+  font-weight: 500;
+}
+
+.todo-items-heading {
+  font-family: "Roboto";
+  font-size: 32px;
+  font-weight: 700;
+  color:#fff;
+}
+
+.todo-items-heading-subpart {
+  font-family: "Roboto";
+  font-size: 32px;
+  font-weight: 500;
+}
+
+.todo-items-container {
+  margin: 0px;
+  padding: 0px;
+}
+
+.todo-item-container {
+  margin-top: 15px;
+  
+  
+  
+}
+
+.checkbox-label {
+    font-family: "Roboto";
+    font-size: 16px;
+    color:#fff;
+    font-weight: 400;
+    width: 82%;
+    margin: 0px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 5px;
+  }
+  
+.todo-user-input {
+  background-color: white;
+  width: 100%;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #e4e7eb;
+  border-radius: 10px;
+  margin-top: 10px;
+  padding: 15px;
+}
+
+.add-todo-button {
+  color: white;
+  background-color: royalblue;
+  font-family: "Roboto";
+  font-size: 18px;
+  border-width: 0px;
+  border-radius: 4px;
+  margin-top: 20px;
+  margin-bottom: 50px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-right: 20px;
+  padding-left: 20px;
+}
+
+.label-container {
+  background-color: black;
+  width: 100%;
+  border-style: solid;
+  border-width: 5px;
+  border-color: red;
+  border-right: none;
+  border-top: none;
+  border-bottom:none;
+  border-radius: 4px;
+}
+
