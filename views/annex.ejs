@@ -8,7 +8,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="../public/css/annex.css">
-    <title>Hello, world!</title>
+    <title>annex</title>
   </head>
   <body>
     <div>
@@ -66,20 +66,78 @@
         </div>
     </div>
     <div class="container">
-        <div class="col-12 ml-2 ml-md-4 ml-lg-5">
-            <h1 style="color: #fff;">Annexe-5 Hostel</h1>
-            <h5 style="font-family:Poppins, sans-serif;color: #fff;"> Florida Hostel offers a comfortable and affordable stay for students and travelers. Located in a convenient area, it provides well-furnished rooms, high-speed Wi-Fi, 24/7 security, and essential amenities. The hostel ensures a friendly environment with clean spaces and easy access to nearby universities, restaurants, and public transport. Perfect for those looking for a budget-friendly yet cozy living experience in Florida.</h5>
+        <div  class="col-12 ">
+            <h1 style="margin-bottom: .5em;text-align: center; color: #fff;">Annex V Hostel</h1>
+            <div class="col-12 col-lg-12  d-flex justify-content-center ">
+                <div class="buttons-container w-100">
+                    <div class=" d-flex flex-row justify-content-between">
+                        <button onclick="about()" id="aboutButton" class="p-3 button selected-button ">
+                            About
+                        </button>
+                        <button onclick="timeToVisit()" id="timeToVisitButton" class="p-3 button ">
+                            Amenities
+                        </button>
+                        <button onclick="attractions()" id="attractionsButton" class="p-3 button ">
+                            Vaccancy
+                        </button>
+                    </div>
+                
+               
+                    <div class="tabs-container">
+                        <div id="aboutTab" class="p-3">
+                            <p class="tab-content">
+                                Annex V Hostel offers a comfortable and affordable stay for students and travelers. 
+                                Located in a convenient area, it provides well-furnished rooms, high-speed Wi-Fi, 24/7 security, and essential amenities.
+                                The hostel ensures a friendly environment with clean spaces and easy access to nearby universities, restaurants, and public transport. 
+                                Perfect for those looking for a budget-friendly yet cozy living experience in Karicode.
+                            </p>
+                        </div>
+                        <div  style="color:#fff;" id="timeToVisitTab" class="p-3">
+                            
+                                <ul>
+                                    <li>Single, Bunk Beds, and Private Rooms</li>
+                                    <li>High-speed Wi-fi</li>
+                                    <li>Storage Lockers & Personal Cabinets</li>
+                                    <li>Study Table & Chair</li>
+                                    <li>Power Sockets & Personal Lights</li>
+                                    
+                                </ul>
+                            
+                        </div>
+                        <div id="attractionsTab" class="p-3">
+                            <p style="color:#fff; text-align:center; font-size: 100px;" class="tab-content">
+                                21/100 
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="todos-bg-container">
+                <div class="container">
+                  <div class="row">
+                    <div class="col-12">
+                      <h1 class="todos-heading"><span style="color:red">Reviews</span> & <span  style="color:royalblue">Ratings</span></h1>
+                      <h1 class="create-task-heading">
+                        Write <span class="create-task-heading-subpart">Review</span>
+                      </h1>
+                      <input type="text" id="todoUserInput" class="todo-user-input" placeholder="Write your review here"/>
+                      <button class="add-todo-button" id="addTodoButton">ADD</button>
+                      <h1 class="todo-items-heading">
+                        People <span class="todo-items-heading-subpart">Reviews</span>
+                      </h1>
+                      <ul class="todo-items-container" id="todoItemsContainer"></ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <h5 style="font-family:Poppins, sans-serif;color: #fff;"></h5>
         </div>
     
-    <div  class="col-12 justify-content-center  m-2 m-md-4 m-lg-5">
-        <div style="text-align: center; ">
-            <button type="button" class="btn btn-danger">Add To Cart</button>
-            <button type="button" class="btn btn-primary">Buy Now</button>
-        </div>
-    </div>
+   
 </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="annex.js" ></script>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
