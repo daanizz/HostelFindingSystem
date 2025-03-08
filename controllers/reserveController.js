@@ -1,5 +1,6 @@
 const Reservation = require('../models/Reservation');
 const Hostel = require('../models/Hostel');
+const Hostel = require('../models/User');
 
 const reserveHostel = async (req, res) => {
     const { hostelId } = req.body;

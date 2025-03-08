@@ -3,6 +3,9 @@ const { addHostel, getHostels, deleteHostel } = require('../controllers/HostelCo
 const { authMiddleware, adminMiddleware } = require('../config/auth');
 const router = express.Router();
 
+
+router.post('/addHostel', hostelController.addHostel);
+
 router.post('/', authMiddleware, adminMiddleware, addHostel);
 router.get('/', getHostels);
 router.delete('/:id', authMiddleware, adminMiddleware, deleteHostel);
