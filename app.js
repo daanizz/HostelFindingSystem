@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const connectDB = require('./config/db');
+
 const authRoutes = require('./routes/authRoutes');
 const hostelRoutes = require('./routes/hostelRoutes');
 const reserveRoutes = require('./routes/reserveRoutes');
@@ -13,6 +14,8 @@ connectDB();
 
 const app = express();
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static('public'));
 
 app.use('/api/auth', authRoutes);
 app.use('/api/hostels', hostelRoutes);

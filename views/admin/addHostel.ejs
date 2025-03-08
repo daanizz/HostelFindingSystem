@@ -21,24 +21,37 @@
 
     <!-- Main Content -->
     <div class="container d-flex flex-column justify-content-center align-items-center min-vh-100">
-        <div class="col-12 col-md-6">
+        <div class="col-12 col-md-6" style="padding-top:10%;">
             <h1 class="text-center mb-4" style="color: #000000;">Add Hostel</h1>
-            <form>
+            <form action="/api/hostels" method="POST">
                 <div class="form-group">
-                    <label for="hostelName" style="color: #000000;">Hostel Name</label>
-                    <input type="text" class="form-control" id="hostelName" placeholder="Enter hostel name">
+                    <label for="hostelName" style="color: #000000;">Hostel ID</label>
+                    <input type="text" class="form-control" id="hostelID" name="hostelID" placeholder="Enter hostel ID" required>
                 </div>
                 <div class="form-group">
-                    <label for="remainingRooms" style="color: #000000;">Remaining Rooms</label>
-                    <input type="number" class="form-control" id="remainingRooms" placeholder="Enter remaining rooms">
+                    <label for="hostelName" style="color: #000000;">Hostel Name</label>
+                    <input type="text" class="form-control" id="hostelName" name="hostelname" placeholder="Enter hostel name" required>
+                </div>
+                <div class="form-group">
+                    <label for="remainingRooms" style="color: #000000;">Monthly Rent</label>
+                    <input type="number" class="form-control" id="monthlyRent" name="monthlyRent" placeholder="Enter Monthly Rent" required>
+                </div>
+                <div class="form-group">
+                    <label for="hostelName" style="color: #000000;">Facilities</label>
+                    <input type="text" class="form-control" id="facilities" name="facilities" placeholder="Enter Top facilities" required>
                 </div>
                 <div class="form-group">
                     <label for="location" style="color: #000000;">Location</label>
-                    <input type="text" class="form-control" id="location" placeholder="Enter location">
+                    <input type="text" class="form-control" id="location" name="location" placeholder="Enter location" required>
                 </div>
                 <div class="form-group">
+                    <label for="remainingRooms" style="color: #000000;">Remaining Rooms</label>
+                    <input type="number" class="form-control" id="numberOfRooms" name="numberOfRooms" placeholder="Enter remaining or available rooms" required>
+                </div>
+                
+                <div class="form-group">
                     <label for="contactNumber" style="color: #000000;">Contact Number</label>
-                    <input type="text" class="form-control" id="contactNumber" placeholder="Enter contact number">
+                    <input type="text" class="form-control" id="ContactNumber" name="ContactNumber" placeholder="Enter contact number" required>
                 </div>
                 <div class="text-center">
                     <button type="submit" class="btn btn-primary">Add Hostel</button>
