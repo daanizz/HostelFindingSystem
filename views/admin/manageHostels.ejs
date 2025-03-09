@@ -61,19 +61,23 @@
                         <tbody>
 <!-- below is the code for showing the hostel details along with the delete button , needd to change the user to hostel ,first study how to do that -->
 
-                            <!-- <% users.forEach(user => { %>
-                                <tr>
-                                    <td><%= user.name %></td>
-                                    <td><%= user.email %></td>
-                                    <td>
-                                      <form action="/delete/<%= user._id %>" method="POST">
-                                        <button type="submit">Delete</button>
-                                      </form>
-                                    </td>
-                                  </tr>
+                                <% hostels.forEach(hostel => { %>
+                                    <tr>
+                                        <td><%= hostel.hostelID %></td>
+                                        <td><%= hostel.hostelname %></td>
+                                        <td><%= hostel.monthlyRent %></td>
+                                        <td><%= hostel.facilities.join(', ') %></td> <!-- Display facilities as a comma-separated string -->
+                                        <td><%= hostel.location %></td>
+                                        <td><%= hostel.ContactNumber %></td>
+                                        <td><%= hostel.numberOfRooms %></td>
+                                        <td>
+                                            <form action="/delete/<%= hostel._id %>" method="POST">
+                                                <button type="submit">Delete</button>
+                                            </form>
+                                        </td>
+                                    </tr>
                                 <% }) %>
-                            Sample Data (Replace with dynamic data from backend) -->
-                            <!-- Add more rows dynamically -->
+                                
                         </tbody>
                     </table>
                 </div>
