@@ -59,27 +59,20 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <!-- Sample Data (Replace with dynamic data from backend) -->
-                            <tr>
-                                <td>1</td>
-                                <td>Hostel A</td>
-                                <td>10</td>
-                                <td>123 Main St, City</td>
-                                <td>123-456-7890</td>
-                                <td>
-                                    <button class="btn btn-danger btn-sm" onclick="deleteHostel(1)">Delete</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Hostel B</td>
-                                <td>5</td>
-                                <td>456 Elm St, Town</td>
-                                <td>987-654-3210</td>
-                                <td>
-                                    <button class="btn btn-danger btn-sm" onclick="deleteHostel(2)">Delete</button>
-                                </td>
-                            </tr>
+<!-- below is the code for showing the hostel details along with the delete button , needd to change the user to hostel ,first study how to do that -->
+
+                            <!-- <% users.forEach(user => { %>
+                                <tr>
+                                    <td><%= user.name %></td>
+                                    <td><%= user.email %></td>
+                                    <td>
+                                      <form action="/delete/<%= user._id %>" method="POST">
+                                        <button type="submit">Delete</button>
+                                      </form>
+                                    </td>
+                                  </tr>
+                                <% }) %>
+                            Sample Data (Replace with dynamic data from backend) -->
                             <!-- Add more rows dynamically -->
                         </tbody>
                     </table>
