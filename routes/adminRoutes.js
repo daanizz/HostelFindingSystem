@@ -4,6 +4,9 @@ const router = express.Router();
 
 router.post('/addHostel', adminController.addHostel); // POST request for adding Hostel
 router.get('/getHostel', adminController.getHostel);
+router.get('/hosteladder',(req,res) => {
+  res.render('admin/addHostel');
+});
 
 router.get('/', adminController.getHostel);
 
