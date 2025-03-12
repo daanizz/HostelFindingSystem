@@ -55,6 +55,7 @@
                                 <th scope="col">Remaining Rooms</th>
                                 <th scope="col">Location</th>
                                 <th scope="col">Contact Number</th>
+                                <th scope="col">Available rooms</th>
                                 <th scope="col">Action</th>
                             </tr>
                         </thead>
@@ -66,13 +67,13 @@
                                         <td><%= hostel.hostelID %></td>
                                         <td><%= hostel.hostelname %></td>
                                         <td><%= hostel.monthlyRent %></td>
-                                        <td><%= hostel.facilities.join(', ') %></td> <!-- Display facilities as a comma-separated string -->
+                                        <!-- <td><%= hostel.facilities.join(', ') %></td> Display facilities as a comma-separated string -->
                                         <td><%= hostel.location %></td>
                                         <td><%= hostel.ContactNumber %></td>
                                         <td><%= hostel.numberOfRooms %></td>
                                         <td>
                                             <form action="/delete/<%= hostel._id %>" method="POST">
-                                                <button type="submit">Delete</button>
+                                                <button type="submit" style="background-color: red; color:#fff">Delete</button>
                                             </form>
                                         </td>
                                     </tr>
