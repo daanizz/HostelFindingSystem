@@ -1,59 +1,60 @@
 @import url('https://fonts.googleapis.com/css2?family=Bree+Serif&family=Caveat:wght@400;700&family=Lobster&family=Monoton&family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display+SC:ital,wght@0,400;0,700;1,700&family=Playfair+Display:ital,wght@0,400;0,700;1,700&family=Roboto:ital,wght@0,400;0,700;1,400;1,700&family=Source+Sans+Pro:ital,wght@0,400;0,700;1,700&family=Work+Sans:ital,wght@0,400;0,700;1,700&display=swap');
-.home-bg{
+
+.home-bg {
     background-image: url("../resource/homewallpaper.jpg");
-    background-size:cover;
-    
-    
+    background-size: cover;
 }
-.para{
-    
+
+.para {
     font-family: sans-serif;
     line-height: 1.5;
     color: black;
     text-align: center;
 }
+
 .bar-bg {
-    background-color: black; 
-    height: 80px; 
-    z-index: 1000; 
+    background-color: black;
+    height: 80px;
+    z-index: 1000;
 }
-.brand{
+
+.brand {
     font-size: 48px;
     font-family: 'Playfair Display', serif;
     font-weight: bolder;
+}
 
-}
 .carousel-container {
-    width: 90%;  /* Adjust width as needed */
-    max-width: 900px; /* Set a max-width */
-    margin: 50px auto; /* Centering */
+    width: 90%;
+    max-width: 900px;
+    margin: 50px auto;
 }
+
 .carousel-inner img {
     border-radius: 50px;
     margin-top: 30px;
-    height: 400px; /* Set a fixed height */
-    object-fit: cover; /* Maintain aspect ratio and cover area */}
+    height: 400px;
+    object-fit: cover;
+}
 
 .navbar {
-    background-color: black
-}
-.navbar-nav{
-    background-color    : black;
-    border-radius: 10px;
-    
-}
-
-.navbar-nav .nav-link:hover {
-    background-color: rgba(255, 255, 255, 0.2); 
-    border-radius: 5px; 
-}
-body{
     background-color: black;
 }
 
+.navbar-nav {
+    background-color: black;
+    border-radius: 10px;
+}
 
+.navbar-nav .nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+}
 
-/*annex*/
+body {
+    background-color: black;
+}
+
 .heading {
     color: #102a42;
     font-family: "Roboto";
@@ -62,14 +63,13 @@ body{
 
 .description {
     font-family: "Roboto";
-    color:#fff;
+    color: #fff;
 }
 
-button,li,p, h1, h2, h3, h4, h5, h6 {
-    user-select: none; /* Prevents text selection */
-    outline: none;     
+button, li, p, h1, h2, h3, h4, h5, h6 {
+    user-select: none;
+    outline: none;
 }
-
 
 .button {
     background-color: #dae2ec;
@@ -79,6 +79,7 @@ button,li,p, h1, h2, h3, h4, h5, h6 {
     border-width: 0;
     border-radius: 8px;
 }
+
 button:focus {
     outline: none;
 }
@@ -88,13 +89,12 @@ button:focus {
     width: 33%;
 }
 
-
-
 .tab-content {
     color: #fff;
     font-family: "Roboto";
-    font-size: 15px;    
+    font-size: 15px;
 }
+
 .tabs-container {
     border: 2px solid #fff;
     border-top: none;
@@ -103,63 +103,60 @@ button:focus {
 }
 
 .todos-bg-container {
-  background-color: black;
-  height: 100vh;
+    background-color: black;
+    height: 100vh;
 }
 
 .todos-heading {
-  text-align: center;
-  color:#fff;
-  font-family: "Roboto";
-  font-size: 46px;
-  font-weight: 700;
-  margin-top: 20px;
-  margin-bottom: 20px;
+    text-align: center;
+    color: #fff;
+    font-family: "Roboto";
+    font-size: 46px;
+    font-weight: 700;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .create-task-heading {
-  font-family: "Roboto";
-  font-size: 32px;
-  font-weight: 700;
-  color:#fff;
+    font-family: "Roboto";
+    font-size: 32px;
+    font-weight: 700;
+    color: #fff;
 }
 
 .create-task-heading-subpart {
-  font-family: "Roboto";
-  font-size: 32px;
-  color:#fff;
-  font-weight: 500;
+    font-family: "Roboto";
+    font-size: 32px;
+    color: #fff;
+    font-weight: 500;
 }
 
 .todo-items-heading {
-  font-family: "Roboto";
-  font-size: 32px;
-  font-weight: 700;
-  color:#fff;
+    font-family: "Roboto";
+    font-size: 32px;
+    font-weight: 700;
+    color: #fff;
 }
 
 .todo-items-heading-subpart {
-  font-family: "Roboto";
-  font-size: 32px;
-  font-weight: 500;
+    font-family: "Roboto";
+    font-size: 32px;
+    font-weight: 500;
 }
 
 .todo-items-container {
-  margin: 0px;
-  padding: 0px;
+    margin: 0px;
+    padding: 0px;
 }
 
 .todo-item-container {
-  margin-top: 15px;
-  
-  
-  
+    margin-top: 15px;
 }
 
 .checkbox-label {
     font-family: "Roboto";
     font-size: 16px;
-    color:#fff;
+    color: #fff;
     font-weight: 400;
     width: 82%;
     margin: 0px;
@@ -168,43 +165,96 @@ button:focus {
     padding-left: 20px;
     padding-right: 20px;
     border-radius: 5px;
-  }
-  
+}
+
 .todo-user-input {
-  background-color: white;
-  width: 100%;
-  border-style: solid;
-  border-width: 1px;
-  border-color: #e4e7eb;
-  border-radius: 10px;
-  margin-top: 10px;
-  padding: 15px;
+    background-color: white;
+    width: 100%;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #e4e7eb;
+    border-radius: 10px;
+    margin-top: 10px;
+    padding: 15px;
 }
 
 .add-todo-button {
-  color: white;
-  background-color: royalblue;
-  font-family: "Roboto";
-  font-size: 18px;
-  border-width: 0px;
-  border-radius: 4px;
-  margin-top: 20px;
-  margin-bottom: 50px;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  padding-right: 20px;
-  padding-left: 20px;
+    color: white;
+    background-color: royalblue;
+    font-family: "Roboto";
+    font-size: 18px;
+    border-width: 0px;
+    border-radius: 4px;
+    margin-top: 20px;
+    margin-bottom: 50px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-right: 20px;
+    padding-left: 20px;
 }
 
 .label-container {
-  background-color: black;
-  width: 100%;
-  border-style: solid;
-  border-width: 5px;
-  border-color: red;
-  border-right: none;
-  border-top: none;
-  border-bottom:none;
-  border-radius: 4px;
+    background-color: black;
+    width: 100%;
+    border-style: solid;
+    border-width: 5px;
+    border-color: red;
+    border-right: none;
+    border-top: none;
+    border-bottom: none;
+    border-radius: 4px;
 }
 
+.rating-container {
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.rating-container label {
+    font-size: 18px;
+    color: #fff;
+    margin-right: 10px;
+}
+
+.rating-select {
+    padding: 5px 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    color: #333;
+}
+
+.stars-container {
+    margin-left: 10px;
+}
+
+.stars-container span {
+    font-size: 20px;
+    color: #ffcc00;
+}
+
+/* Context Menu */
+.context-menu {
+    position: absolute;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    display: none;
+}
+
+.context-menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.context-menu ul li {
+    padding: 8px 16px;
+    cursor: pointer;
+}
+
+.context-menu ul li:hover {
+    background-color: #f0f0f0;
+}
