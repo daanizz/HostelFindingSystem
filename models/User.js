@@ -10,13 +10,15 @@ const userSchema = new mongoose.Schema({
 
 userSchema.pre('save', async function (next) {
     if (this.isModified('password')) {
-        this.password = await bcrypt.hash(this.password, 8);
+      console.log('Before Hashing Password:', this.password); // Log the password before hashing
+      this.password = await bcrypt.hash(this.password, 10); // Ensure 10 salt rounds
+      console.log('After Hashing Password:', this.password); // Log the hashed password
     }
     next();
-});
+  });
 
 userSchema.methods.comparePassword = async function (password) {
     return await bcrypt.compare(password, this.password);
 };
 
-module.exports = mongoose.model('User', userSchema);
+module.exports = mongoose.model('User', userSchema , 'users');

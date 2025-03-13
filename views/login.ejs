@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <link rel="stylesheet" href="../public/css/login.css">
+    <link rel="stylesheet" href="/css/login.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
@@ -22,14 +22,14 @@
                         </button>
                         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                             <div style="  padding: 10px;" class="navbar-nav">
-                                <a class="nav-link active " id="navItem1" href="homepage.ejs">
+                                <a class="nav-link active " id="navItem1" href="/home">
                                     <span style=" padding-left: 10px;padding-right: 10px; color:#fff; font-family:Roboto; font-weight:600; font-size: 18px;">Home</span>
                                     <span class=" sr-only">(current)</span>
                                 </a>
-                                <a style=" padding-left: 10px; padding-right: 10px;  color:#fff; font-family:Roboto; font-size: 18px; font-weight:600;" class="nav-link" href="#exploreMenuSection" id="navItem2">My Reserves</a>
-                                <a style="padding-left: 10px; padding-right: 10px;  color:#fff; font-family:Roboto; font-size: 18px; font-weight:600;" class="nav-link" href="#deliveryPaymentSection" id="navItem3">Search</a>
-                                <a style="padding-left: 10px;padding-right: 10px;  color:#fff; font-family:Roboto; font-size: 18px; font-weight:600;" class="nav-link" href="login.ejs" id="navItem4">Login</a>
-                                <a style="padding-left: 10px; padding-right: 10px; color:#fff; font-family:Roboto; font-size: 18px; font-weight:600;" class="nav-link" href="contactus.ejs" id="navItem4">Contacts us</a>
+                                <a style=" padding-left: 10px; padding-right: 10px;  color:#fff; font-family:Roboto; font-size: 18px; font-weight:600;" class="nav-link" href="/reservations" id="navItem2">My Reserves</a>
+                                <a style="padding-left: 10px; padding-right: 10px;  color:#fff; font-family:Roboto; font-size: 18px; font-weight:600;" class="nav-link" href="/search" id="navItem3">Search</a>
+                                <a style="padding-left: 10px;padding-right: 10px;  color:#fff; font-family:Roboto; font-size: 18px; font-weight:600;" class="nav-link" href="/login" id="navItem4">Login</a>
+                                <a style="padding-left: 10px; padding-right: 10px; color:#fff; font-family:Roboto; font-size: 18px; font-weight:600;" class="nav-link" href="/contact" id="navItem5">Contacts us</a>
                             </div>
                         </div>
                     </div>
@@ -37,15 +37,15 @@
             
     </div>
     <div class="From-box">
-        <form class="Login-form">
+        <form class="Login-form" action="/auth/login" method="POST">
             <h1>Login</h1>
             <div class="input-box">
-                <input type="text" required>
+                <input type="email" name="email" required>
                 <label>Email</label>
                 <ion-icon name="mail-outline"></ion-icon>
             </div>
             <div class="input-box">
-                <input type="password" required>
+                <input type="password" name="password" required>
                 <label>Password</label>
                 <ion-icon name="lock-closed-outline"></ion-icon>
             </div>
@@ -60,20 +60,20 @@
             <h5 class="Register-btn">Don't have an account ? Register</h5>
         </form>
 
-        <form class="Register-form">
+        <form class="Register-form" action="/auth/sign_up" method="POST">
             <h1>Sign Up</h1>
             <div class="input-box">
-                <input type="text" required>
+                <input type="text" name="name" required>
                 <label>Username</label>
                 <ion-icon name="person-outline"></ion-icon>
             </div>
             <div class="input-box">
-                <input type="text" required>
+                <input type="email" name="email" required>
                 <label>Email</label>
                 <ion-icon name="mail-outline"></ion-icon>
             </div>
             <div class="input-box">
-                <input type="password" required>
+                <input type="password" name="password" required>
                 <label>Password</label>
                 <ion-icon name="lock-closed-outline"></ion-icon>
             </div>
@@ -88,7 +88,9 @@
         </form>
     </div>
 
-    <script src="../public/js/login.js"></script>
+    <script src="/js/login.js"></script>
+    <script src="/js/signup.js"></script>
+    <script src="/js/signupf.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 

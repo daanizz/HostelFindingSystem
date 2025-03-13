@@ -17,8 +17,8 @@ router.get('/hosteladder',(req,res) => {
   res.render('admin/addHostel');
 });
 
-router.get('/', (req,res) => {
-  res.render('admin/dashboard');
-});
+// router.get('/', (req,res) => {
+//   res.render('admin/dashboard');
+// });
 
 module.exports = router;

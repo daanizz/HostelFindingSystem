@@ -15,7 +15,7 @@
         <nav class="navbar navbar-expand-lg navbar-light bar-bg fixed-top">
             <div class="container">
                 <!-- Logo -->
-                <a class="navbar-brand" href="/dashboard">
+                <a class="navbar-brand" href="/admin/dashboard">
                     <h1 class="brand"><span style="color: red;">Stay</span><span style="color: royalblue;">Spot</span></h1>
                 </a>
                 <button style="background-color:#fff;" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -24,14 +24,14 @@
                 <!-- Navigation Links -->
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div style="padding: 10px;" class="navbar-nav">
-                        <a class="nav-link" id="navItem1" href="/dashboard">
+                        <a class="nav-link" id="navItem1" href="/admin/dashboard">
                             <span style="padding-left: 10px; padding-right: 10px; color:#fff; font-family:Roboto; font-weight:600; font-size: 18px;">Home</span>
                         </a>
-                        <a class="nav-link active" id="navItem2" href="/getHostel">
+                        <a class="nav-link active" id="navItem2" href="/admin/getHostel">
                             <span style="padding-left: 10px; padding-right: 10px; color:#fff; font-family:Roboto; font-size: 18px; font-weight:600;">Manage Hostel</span>
                             <span class="sr-only">(current)</span>
                         </a>
-                        <a class="nav-link" id="navItem3" href="/getReserves">
+                        <a class="nav-link" id="navItem3" href="/admin/getReserves">
                             <span style="padding-left: 10px; padding-right: 10px; color:#fff; font-family:Roboto; font-size: 18px; font-weight:600;">Handle Reservation</span>
                         </a>
                     </div>
@@ -72,7 +72,7 @@
                                         <td><%= hostel.ContactNumber %></td>
                                         <td><%= hostel.numberOfRooms %></td>
                                         <td>
-                                            <form action="/delete/<%= hostel._id %>" onclick="return confirm('Are you sure you want to delete this hostel?');" method="POST">
+                                            <form action="/admin/delete/<%= hostel._id %>" onclick="return confirm('Are you sure you want to delete this hostel?');" method="POST">
                                                 <button type="submit" style="background-color: red; color:#fff">Delete</button>
                                             </form>
                                         </td>
@@ -84,7 +84,7 @@
                 </div>
                 <!-- Add Hostel Button -->
                 <div class="text-center mt-4">
-                    <button class="btn btn-primary" onclick="window.location.href='/hosteladder'">Add Hostel</button>
+                    <button class="btn btn-primary" onclick="window.location.href='/admin/hosteladder'">Add Hostel</button>
                 </div>
             </div>
         </div>
