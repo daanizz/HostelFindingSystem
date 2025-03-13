@@ -4,6 +4,7 @@ const router = express.Router();
 
 router.post('/addHostel', adminController.addHostel); // POST request for adding Hostel
 router.get('/getHostel', adminController.getHostel);
+router.post('/delete/:id', adminController.deleteHostel);
 router.get('/hosteladder',(req,res) => {
   res.render('admin/addHostel');
 });

@@ -72,7 +72,7 @@
                                         <td><%= hostel.ContactNumber %></td>
                                         <td><%= hostel.numberOfRooms %></td>
                                         <td>
-                                            <form action="/delete/<%= hostel._id %>" method="POST">
+                                            <form action="/delete/<%= hostel._id %>" onclick="return confirm('Are you sure you want to delete this hostel?');" method="POST">
                                                 <button type="submit" style="background-color: red; color:#fff">Delete</button>
                                             </form>
                                         </td>
