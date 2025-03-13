@@ -14,7 +14,7 @@ router.get('/dashboard', (req,res) =>{
 });
 
 router.get('/hosteladder',(req,res) => {
-  res.render('/admin/addHostel');
+  res.render('admin/addHostel');
 });
 
 router.get('/', (req,res) => {
