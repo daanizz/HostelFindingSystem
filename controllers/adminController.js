@@ -40,3 +40,13 @@ exports.deleteHostel = async (req, res) => {
         res.redirect('/getHostel');
     }
 };
+
+exports.getReserves = async(req,res) => {
+    try {
+        const reserves = await Reservation.find({}); // Fetch all Reservaton from DB
+        res.render('admin/manageReserves', { reserves }); // Render `manageReserves.ejs` with data
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("Error fetching hostels");
+    }
+};
