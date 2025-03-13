@@ -1,4 +1,5 @@
 const Hostel = require('../models/Hostel');
+const Reservation = require('../models/Reservation');
 
 exports.addHostel = async (req, res) => {
     try {
@@ -40,6 +41,36 @@ exports.deleteHostel = async (req, res) => {
         res.redirect('/getHostel');
     }
 };
+
+exports.updateStatus = async (req, res) => {
+    const { reservationID, status } = req.body;
+    try {
+        await Reservation.updateOne({ reservationID }, { status });
+        res.redirect('/getReserves'); // Redirect back to the same page to reflect changes
+    } catch (error) {
+        res.status(500).send('Error updating status: ' + error.message);
+        res.redirect('/getReserves'); 
+    }
+};
+
+
+
+exports.deleteReservation = async (req, res) => {
+    try {
+        const deletedReservation = await Reservation.findByIdAndDelete(req.params.id);
+        if (!deletedReservation) {
+            return res.status(404).json({ message: "Reservation not found" });
+        }
+        // req.flash("success", "Hostel deleted successfully!"); // Flash message for success
+        res.redirect('/getReserves');
+    } catch (error) {
+        console.error("Error deleting hostel:", error);
+        res.status(500).json({ message: "Internal Server Error" });
+        // req.flash("error", "Something went wrong while deleting the hostel."); // Flash message for error
+        res.redirect('/getReserves');
+    }
+};
+
 
 exports.getReserves = async(req,res) => {
     try {
