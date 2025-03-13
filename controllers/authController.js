@@ -33,7 +33,7 @@ if (user.isAdmin) {
     return res.redirect('/admin/dashboard');
   }
 
-res.redirect('homepage');//'admin/dashboard'
+res.render('homepage');
   } catch (err) {
     console.error(err);
     res.status(500).send('Server error');
