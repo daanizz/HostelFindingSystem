@@ -9,7 +9,7 @@ exports.addHostel = async (req, res) => {
             return res.status(400).json({ message: "All fields are required" });
         }
         await hostel.save();
-        res.redirect('/getHostel');
+        res.redirect('/admin/getHostel');
     } catch (error) {
         console.error(error);
         res.status(500).send("Error adding hostel");
@@ -33,7 +33,7 @@ exports.deleteHostel = async (req, res) => {
             return res.status(404).json({ message: "Hostel not found" });
         }
         // req.flash("success", "Hostel deleted successfully!"); // Flash message for success
-        res.redirect('/getHostel');
+        res.redirect('/admin/getHostel');
     } catch (error) {
         console.error("Error deleting hostel:", error);
         res.status(500).json({ message: "Internal Server Error" });
@@ -46,10 +46,10 @@ exports.updateStatus = async (req, res) => {
     const { reservationID, status } = req.body;
     try {
         await Reservation.updateOne({ reservationID }, { status });
-        res.redirect('/getReserves'); // Redirect back to the same page to reflect changes
+        res.redirect('/admin/getReserves'); // Redirect back to the same page to reflect changes
     } catch (error) {
         res.status(500).send('Error updating status: ' + error.message);
-        res.redirect('/getReserves'); 
+        res.redirect('/admin/getReserves'); 
     }
 };
 
@@ -62,12 +62,12 @@ exports.deleteReservation = async (req, res) => {
             return res.status(404).json({ message: "Reservation not found" });
         }
         // req.flash("success", "Hostel deleted successfully!"); // Flash message for success
-        res.redirect('/getReserves');
+        res.redirect('/admin/getReserves');
     } catch (error) {
         console.error("Error deleting hostel:", error);
         res.status(500).json({ message: "Internal Server Error" });
         // req.flash("error", "Something went wrong while deleting the hostel."); // Flash message for error
-        res.redirect('/getReserves');
+        res.redirect('/admin/getReserves');
     }
 };
 
