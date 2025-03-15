@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <link rel="stylesheet" href="../public/css/homepage.css">
+    <link rel="stylesheet" href="css/homepage.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
@@ -22,6 +22,8 @@
             padding: 20px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background-color: #fff;
+            cursor: pointer; /* Add pointer cursor to indicate clickable cards */
         }
 
         .hostel-card:hover {
@@ -39,24 +41,56 @@
             font-size: 24px;
             font-weight: bold;
             margin-bottom: 10px;
+            color: #333;
         }
 
         .hostel-card p {
             font-size: 16px;
             color: #555;
+            margin-bottom: 5px;
         }
 
         .hostel-card .btn {
             margin-top: 10px;
+            background-color: #007bff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .hostel-card .btn:hover {
+            background-color: #0056b3;
+        }
+
+        .home-bg {
+            background-color: #f8f9fa;
+        }
+
+        .bar-bg {
+            background-color: #343a40;
+        }
+
+        .brand {
+            font-family: 'Roboto', sans-serif;
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        .para {
+            font-size: 18px;
+            color: #666;
         }
     </style>
 </head>
 
 <body class="home-bg">
+    <!-- Navigation Bar -->
     <div>
         <nav class="navbar navbar-expand-lg navbar-light bar-bg fixed-top">
             <div class="container">
-                <a class="navbar-brand" href="homepage.ejs">
+                <a class="navbar-brand" href="/">
                     <h1 class="brand"><span style="color: red;">Stay</span><span style="color: royalblue;">Spot</span></h1>
                 </a>
                 <button style="background-color:#fff;" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -64,88 +98,73 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div style="padding: 10px;" class="navbar-nav">
-                        <a class="nav-link active" id="navItem1" href="homepage.ejs">
+                        <a class="nav-link active" id="navItem1" href="/">
                             <span style="padding-left: 10px;padding-right: 10px; color:#fff; font-family:Roboto; font-weight:600; font-size: 18px;">Home</span>
                             <span class="sr-only">(current)</span>
                         </a>
-                        <a style="padding-left: 10px; padding-right: 10px; color:#fff; font-family:Roboto; font-size: 18px; font-weight:600;" class="nav-link" href="admin/dashboard.ejs" id="navItem2">My Reserves</a>
-                        <a style="padding-left: 10px; padding-right: 10px; color:#fff; font-family:Roboto; font-size: 18px; font-weight:600;" class="nav-link" href="annex.ejs" id="navItem3">Search</a>
-                        <a style="padding-left: 10px;padding-right: 10px; color:#fff; font-family:Roboto; font-size: 18px; font-weight:600;" class="nav-link" href="login.ejs" id="navItem4">Login</a>
-                        <a style="padding-left: 10px; padding-right: 10px; color:#fff; font-family:Roboto; font-size: 18px; font-weight:600;" class="nav-link" href="contactus.ejs" id="navItem4">Contact us</a>
+                        <a style="padding-left: 10px; padding-right: 10px; color:#fff; font-family:Roboto; font-size: 18px; font-weight:600;" class="nav-link" href="/my-reserves" id="navItem2">My Reserves</a>
+                        <a style="padding-left: 10px; padding-right: 10px; color:#fff; font-family:Roboto; font-size: 18px; font-weight:600;" class="nav-link" href="/search" id="navItem3">Search</a>
+                        <a style="padding-left: 10px;padding-right: 10px; color:#fff; font-family:Roboto; font-size: 18px; font-weight:600;" class="nav-link" href="/login" id="navItem4">Login</a>
+                        <a style="padding-left: 10px; padding-right: 10px; color:#fff; font-family:Roboto; font-size: 18px; font-weight:600;" class="nav-link" href="/contact-us" id="navItem4">Contact us</a>
                     </div>
                 </div>
             </div>
         </nav>
     </div>
 
-    <div>
-        <div class="container d-flex flex-column justify-content-center align-items-center min-vh-100">
-            <div class="column">
-                <div class="col-12 justify-content-center">
-                    <div style="text-align:center">
-                        <h1>Find Your Perfect Stay</h1>
-                        <p class="para" style="font-size: 18px;">“Search for hostels and PGs near you!”</p>
+    <!-- Main Content -->
+    <div class="container d-flex flex-column justify-content-center align-items-center min-vh-100">
+        <div class="column">
+            <div class="col-12 justify-content-center">
+                <div style="text-align:center">
+                    <h1>Find Your Perfect Stay</h1>
+                    <p class="para" style="font-size: 18px;">“Search for hostels and PGs near you!”</p>
+                </div>
+            </div>
+
+            <!-- Search Bar -->
+            <div class="col-12 justify-content-center">
+                <div class="search-bar">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search for hostels by location or name..." aria-label="Search">
+                        <div class="input-group-append">
+                            <button class="btn btn-primary" type="button">Search</button>
+                        </div>
                     </div>
                 </div>
+            </div>
 
-                <!-- Search Bar -->
-                <div class="col-12 justify-content-center">
-                    <div class="search-bar">
-                        <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Search for hostels by location or name..." aria-label="Search">
-                            <div class="input-group-append">
-                                <button class="btn btn-primary" type="button">Search</button>
+            <!-- Hostel List -->
+            <div class="col-12 justify-content-center">
+                <div id="hostel-list">
+                    <!-- Annex Hostel -->
+                    <div class="hostel-card" onclick="window.location.href='/annex'">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <img src="https://via.placeholder.com/200" alt="Annex Hostel">
+                            </div>
+                            <div class="col-md-9">
+                                <h3>Annex Hostel</h3>
+                                <p class="location"><strong>Location:</strong> Delhi</p>
+                                <p><strong>Facilities:</strong> Wi-Fi, AC, Laundry, Food</p>
+                                <p><strong>Price:</strong> ₹5000/month</p>
+                                <button class="btn btn-primary" onclick="window.location.href='/book-annex'">Book Now</button>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <!-- Hostel List -->
-                <div class="col-12 justify-content-center">
-                    <div id="hostel-list">
-                        <!-- Example Hostel Cards -->
-                        <div class="hostel-card">
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <img src="https://via.placeholder.com/200" alt="Hostel Image">
-                                </div>
-                                <div class="col-md-9">
-                                    <h3>Hostel A</h3>
-                                    <p><strong>Location:</strong> Delhi</p>
-                                    <p><strong>Facilities:</strong> Wi-Fi, AC, Laundry, Food</p>
-                                    <p><strong>Price:</strong> ₹5000/month</p>
-                                    <button class="btn btn-primary">Book Now</button>
-                                </div>
+                    <!-- Taibha Hostel -->
+                    <div class="hostel-card" onclick="window.location.href='/taibha'">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <img src="https://via.placeholder.com/200" alt="Taibha Hostel">
                             </div>
-                        </div>
-
-                        <div class="hostel-card">
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <img src="https://via.placeholder.com/200" alt="Hostel Image">
-                                </div>
-                                <div class="col-md-9">
-                                    <h3>Hostel B</h3>
-                                    <p><strong>Location:</strong> Mumbai</p>
-                                    <p><strong>Facilities:</strong> Wi-Fi, AC, Gym, Food</p>
-                                    <p><strong>Price:</strong> ₹6000/month</p>
-                                    <button class="btn btn-primary">Book Now</button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="hostel-card">
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <img src="https://via.placeholder.com/200" alt="Hostel Image">
-                                </div>
-                                <div class="col-md-9">
-                                    <h3>Hostel C</h3>
-                                    <p><strong>Location:</strong> Bangalore</p>
-                                    <p><strong>Facilities:</strong> Wi-Fi, AC, Laundry, Food</p>
-                                    <p><strong>Price:</strong> ₹5500/month</p>
-                                    <button class="btn btn-primary">Book Now</button>
-                                </div>
+                            <div class="col-md-9">
+                                <h3>Taibha Hostel</h3>
+                                <p class="location"><strong>Location:</strong> Mumbai</p>
+                                <p><strong>Facilities:</strong> Wi-Fi, AC, Gym, Food</p>
+                                <p><strong>Price:</strong> ₹6000/month</p>
+                                <button class="btn btn-primary" onclick="window.location.href='/book-taibha'">Book Now</button>
                             </div>
                         </div>
                     </div>
@@ -162,7 +181,7 @@
 
             hostelCards.forEach(card => {
                 const hostelName = card.querySelector('h3').textContent.toLowerCase();
-                const location = card.querySelector('p').textContent.toLowerCase();
+                const location = card.querySelector('.location').textContent.toLowerCase();
 
                 if (hostelName.includes(searchQuery) || location.includes(searchQuery)) {
                     card.style.display = 'block';

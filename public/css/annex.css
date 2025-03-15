@@ -258,3 +258,127 @@ button:focus {
 .context-menu ul li:hover {
     background-color: #f0f0f0;
 }
+
+/* Style for the review container */
+.todo-item-container {
+    background: linear-gradient(135deg, #ffffff, #f8f9fa); /* Subtle gradient background */
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+    border: 1px solid #e0e0e0; /* Light border for definition */
+    transition: transform 0.2s ease, box-shadow 0.2s ease; /* Smooth hover effect */
+}
+
+/* Hover effect for the review container */
+.todo-item-container:hover {
+    transform: translateY(-2px); /* Slight lift on hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Enhanced shadow on hover */
+}
+
+/* Style for the user details */
+.user-details {
+    font-size: 14px;
+    color: #333; /* Dark text for better visibility */
+    font-weight: 600; /* Bold text for emphasis */
+    margin-bottom: 10px; /* Space between user details and review text */
+}
+
+/* Style for the review text */
+.checkbox-label {
+    font-size: 16px;
+    color: #333; /* Dark text for better readability */
+    margin-bottom: 10px;
+    font-weight: 500; /* Slightly bold for emphasis */
+}
+
+/* Style for the stars container */
+.stars-container {
+    font-size: 20px; /* Slightly larger stars */
+    color: #ffc107; /* Yellow color for stars */
+    margin-left: 10px; /* Spacing between text and stars */
+    display: flex;
+    align-items: center;
+    gap: 4px; /* Space between stars */
+}
+
+.user-details::before {
+    content: "👤"; /* User icon */
+    font-size: 14px;
+    margin-right: 4px;
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.todo-item-container {
+    animation: fadeIn 0.5s ease;
+}
+
+/* Style for the context menu */
+.context-menu {
+    position: absolute;
+    background-color: white;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    padding: 5px 0;
+    border-radius: 4px;
+}
+
+/* Style for the delete option in the context menu */
+.context-menu div {
+    padding: 8px 16px;
+    cursor: pointer;
+    color: #333;
+    font-size: 14px;
+}
+
+.context-menu div:hover {
+    background-color: #f0f0f0;
+    color: #000;
+}
+
+/* Modal Styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1000; /* Ensure it appears above other elements */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+  }
+  
+  .modal-buttons {
+    margin-top: 20px;
+  }
+  
+  .modal-buttons button {
+    padding: 10px 20px;
+    margin: 0 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  #confirmDelete {
+    background-color: #ff4d4d; /* Red for delete */
+    color: white;
+  }
+  
+  #cancelDelete {
+    background-color: #f0f0f0; /* Light gray for cancel */
+  }

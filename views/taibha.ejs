@@ -7,10 +7,16 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" href="../public/css/annex.css">
-    <title>annex</title>
+    <link rel="stylesheet" href="css/annex.css">
+    <title>Taibha Hostel</title>
   </head>
   <body>
+    <!-- Hidden element to store hostelID -->
+    <div id="hostelID" data-hostel-id="<%= hostelID %>"></div>
+
+    <!-- Hidden element to store the logged-in user's ID -->
+    <div id="userID" data-user-id="<%= user ? user._id : '' %>"></div>
+
     <div>
         <nav class="navbar navbar-expand-lg navbar-light bar-bg fixed-top">
             <div class="container">
@@ -45,13 +51,13 @@
             </ol>
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="../public/resource/front1.jpg" class="d-block w-100" alt="...">
+                    <img src="resource/front1.jpg" class="d-block w-100" alt="...">
                 </div>
                 <div class="carousel-item">
-                    <img src="../public/resource/image2.jpg" class="d-block w-100" alt="...">
+                    <img src="resource/image2.jpg" class="d-block w-100" alt="...">
                 </div>
                 <div class="carousel-item">
-                    <img src="../public/resource/image4.jpg" class="d-block w-100" alt="...">
+                    <img src="resource/image4.jpg" class="d-block w-100" alt="...">
                 </div>
             </div>
             <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -67,7 +73,7 @@
 
     <div class="container">
         <div class="col-12">
-            <h1 style="margin-bottom: .5em;text-align: center; color: #fff;">Annex V Hostel</h1>
+            <h1 style="margin-bottom: .5em;text-align: center; color: #fff;">Taibha Hostel</h1>
             <div class="col-12 col-lg-12 d-flex justify-content-center">
                 <div class="buttons-container w-100">
                     <div class="d-flex flex-row justify-content-between">
@@ -85,7 +91,7 @@
                     <div class="tabs-container">
                         <div id="aboutTab" class="p-3">
                             <p class="tab-content">
-                                Annex V Hostel offers a comfortable and affordable stay for students and travelers. 
+                                Taibha Hostel offers a comfortable and affordable stay for students and travelers. 
                                 Located in a convenient area, it provides well-furnished rooms, high-speed Wi-Fi, 24/7 security, and essential amenities.
                                 The hostel ensures a friendly environment with clean spaces and easy access to nearby universities, restaurants, and public transport. 
                                 Perfect for those looking for a budget-friendly yet cozy living experience in Karicode.
@@ -151,9 +157,20 @@
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="../public/js/annex.js"></script>
+    <script src="js/review.js"></script> <!-- Include the review.js file -->
+    <script src="js/taibha.js"></script> <!-- Include the taibha.js file -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<!-- Add the modal here -->
+<div id="deleteModal" class="modal" style="display: none;">
+    <div class="modal-content">
+      <p>Are you sure you want to delete this review?</p>
+      <div class="modal-buttons">
+        <button id="confirmDelete">Yes</button>
+        <button id="cancelDelete">No</button>
+      </div>
+    </div>
+  </div>
   </body>
-</html>
+  </html>

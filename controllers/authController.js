@@ -10,9 +10,9 @@ exports.login = async (req, res) => {
     // Find the user by email
     const user = await User.findOne({ email });
     if (!user) {
-  console.log('Incorrect user');
-  return res.render('login'); // Stay on login page
-}
+      console.log('Incorrect user');
+      return res.render('login'); // Stay on login page
+    }
 
     // Log the stored hash and input password
     console.log('Stored Hash:', user.password);
@@ -21,25 +21,34 @@ exports.login = async (req, res) => {
     // Compare the input password with the hashed password from the database
     const isMatch = await bcrypt.compare(password, user.password);
 
-console.log('Password Match:', isMatch);  // Add this line to debug
+    console.log('Password Match:', isMatch);  // Add this line to debug
 
-if (!isMatch) {
-  console.log('Incorrect password');
-  return res.render('login'); // Stay on login page
-}
+    if (!isMatch) {
+      console.log('Incorrect password');
+      return res.render('login'); // Stay on login page
+    }
 
-if (user.isAdmin) {
-    const users = await User.find({});
-    return res.redirect('/admin/dashboard');
-  }
+    // Set user information in the session
+    req.session.user = {
+      _id: user._id,
+      name: user.name,
+      email: user.email,
+      isAdmin: user.isAdmin
+    };
 
-res.render('homepage');
+    console.log('Session after login:', req.session); // Debug session
+
+    if (user.isAdmin) {
+      const users = await User.find({});
+      return res.redirect('/admin/dashboard');
+    }
+
+    res.render('homepage');
   } catch (err) {
     console.error(err);
     res.status(500).send('Server error');
   }
 };
-
 
 
 // Sign up controller

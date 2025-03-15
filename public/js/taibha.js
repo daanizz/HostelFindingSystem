@@ -4,7 +4,7 @@ const hostelID = parseInt(document.getElementById('hostelID').dataset.hostelId, 
 // Initialize review functionality from shared review.js
 initializeReviews(hostelID);
 
-// Tab functionality (specific to Annex Hostel)
+// Tab functionality (specific to Taibha Hostel)
 let aboutTab = document.getElementById("aboutTab");
 let aboutButton = document.getElementById("aboutButton");
 let timeToVisitTab = document.getElementById("timeToVisitTab");

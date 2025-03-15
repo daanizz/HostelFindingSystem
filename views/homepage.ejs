@@ -9,58 +9,48 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
 </head>
 
-<body  class="home-bg">
+<body class="home-bg">
+    <!-- Navigation Bar -->
     <div>
-        
-                <nav class="navbar navbar-expand-lg navbar-light bar-bg fixed-top">
-                    <div class="container">
-                        <a class="navbar-brand" href="homepage.ejs">
-                           <h1 class="brand"><span style="color: red;">Stay</span><span style="color: royalblue;">Spot</span></h1>
+        <nav class="navbar navbar-expand-lg navbar-light bar-bg fixed-top">
+            <div class="container">
+                <a class="navbar-brand" href="/">
+                    <h1 class="brand"><span style="color: red;">Stay</span><span style="color: royalblue;">Spot</span></h1>
+                </a>
+                <button style="background-color:#fff;" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <div style="padding: 10px;" class="navbar-nav">
+                        <a class="nav-link active" id="navItem1" href="/">
+                            <span style="padding-left: 10px;padding-right: 10px; color:#fff; font-family:Roboto; font-weight:600; font-size: 18px;">Home</span>
+                            <span class="sr-only">(current)</span>
                         </a>
-                        <button style="background-color:#fff;" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-                        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                            <div style="  padding: 10px;" class="navbar-nav">
-                                <a class="nav-link active " id="navItem1" href="homepage.ejs">
-                                    <span style=" padding-left: 10px;padding-right: 10px; color:#fff; font-family:Roboto; font-weight:600; font-size: 18px;">Home</span>
-                                    <span class=" sr-only">(current)</span>
-                                </a>
-                                <a style=" padding-left: 10px; padding-right: 10px;  color:#fff; font-family:Roboto; font-size: 18px; font-weight:600;" class="nav-link" href="MyReservation.ejs" id="navItem2">My Reserves</a>
-                                <a style="padding-left: 10px; padding-right: 10px;  color:#fff; font-family:Roboto; font-size: 18px; font-weight:600;" class="nav-link" href="search.ejs" id="navItem3">Search</a>
-                                <a style="padding-left: 10px;padding-right: 10px;  color:#fff; font-family:Roboto; font-size: 18px; font-weight:600;" class="nav-link" href="login.ejs" id="navItem4">Login</a>
-                                <a style="padding-left: 10px; padding-right: 10px; color:#fff; font-family:Roboto; font-size: 18px; font-weight:600;" class="nav-link" href="contactus.ejs" id="navItem4">Contacts us</a>
-                            </div>
-                        </div>
+                        <a style="padding-left: 10px; padding-right: 10px; color:#fff; font-family:Roboto; font-size: 18px; font-weight:600;" class="nav-link" href="/my-reserves" id="navItem2">My Reserves</a>
+                        <a style="padding-left: 10px; padding-right: 10px; color:#fff; font-family:Roboto; font-size: 18px; font-weight:600;" class="nav-link" href="/search" id="navItem3">Search</a>
+                        <a style="padding-left: 10px;padding-right: 10px; color:#fff; font-family:Roboto; font-size: 18px; font-weight:600;" class="nav-link" href="/login" id="navItem4">Login</a>
+                        <a style="padding-left: 10px; padding-right: 10px; color:#fff; font-family:Roboto; font-size: 18px; font-weight:600;" class="nav-link" href="/contact-us" id="navItem4">Contact Us</a>
                     </div>
-                </nav>
-            
+                </div>
+            </div>
+        </nav>
     </div>
 
-    <div>
-        <div class="container  d-flex flex-column justify-content-center align-items-center min-vh-100">
-            <div class="column">
-                <div class="col-12 justify-content-center">
-                    <div style="text-align:center">
-                        <h1>India's Top App for Finding Hostels & PGs!</h1>
-                        <p  class="para" style="font-size: 18px;">“Find your stay, your way!”</p>
-                    </div>
-                </div>
+    <!-- Main Content -->
+    <div class="container d-flex flex-column justify-content-center align-items-center min-vh-100">
+        <div class="text-center">
+            <h1>India's Top App for Finding Hostels & PGs!</h1>
+            <p class="para" style="font-size: 18px;">“Find your stay, your way!”</p>
             
-                <div  class="col-12 justify-content-center">
-                    <div style="text-align: center;">
-                        <button class="search-btn">Search</button>
-                        <button class="logic-btn" onclick="window.location.href='login.ejs'" >login</button>
-                    </div>
-                </div>
-    </div>
+            <!-- Search and LogOut Buttons -->
+            <div class="mt-4">
+                <a href="/search" class="btn btn-primary btn-lg">Search</a>
+                <button class="btn btn-danger btn-lg ml-3" onclick="window.location.href='/logout'">LogOut</button>
+            </div>
         </div>
     </div>
-</div>
-       
-
-
-
 </body>
+
 <script></script>
+
 </html>
