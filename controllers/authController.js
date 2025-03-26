@@ -35,6 +35,13 @@ exports.login = async (req, res) => {
       email: user.email,
       isAdmin: user.isAdmin
     };
+    req.session.save(err => {
+      if (err) {
+        console.error('Session save error:', err);
+        return res.status(500).send('Login failed');
+      }
+      // res.redirect('/login');
+    });
 
     console.log('Session after login:', req.session); // Debug session
 

@@ -193,6 +193,29 @@ button:focus {
     padding-left: 20px;
 }
 
+.add-todo-button2 {
+    color: rgb(0, 0, 0);
+    background-color: rgb(255, 0, 0);
+    font-family: "Roboto";
+    font-size: 18px;
+    border-width: 0px;
+    border-radius: 4px;
+    margin-top: 20px;
+    margin-bottom: 50px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-right: 20px;
+    padding-left: 20px;
+    align-items: center;
+}
+
+.button-container2 {
+    display: flex;
+    justify-content: center; /* Centers horizontally */
+    align-items: center; /* Centers vertically */
+    min-height: 100vh; /* Ensures full viewport height */
+  }
+
 .label-container {
     background-color: black;
     width: 100%;

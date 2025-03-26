@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const userController = require('../controllers/userController');
+const reserveController = require('../controllers/reserveController');
 
 // Homepage route
 router.get('/', userController.getHomepage);
@@ -22,5 +23,8 @@ router.get('/login', userController.getLoginPage);
 
 // Contact Us page route
 router.get('/contact-us', userController.getContactUsPage);
+
+// Route to handle reservation
+router.post('/reserv', reserveController.reserve);
 
 module.exports = router;
