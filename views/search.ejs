@@ -10,9 +10,10 @@
     <style>
         /* Custom CSS for the search page */
         .search-bar {
-            max-width: 600px;
+            text-align: center;
             margin: 0 auto;
             padding: 20px;
+            margin-top:15px;
         }
 
         .hostel-card {
@@ -48,6 +49,7 @@
             font-size: 16px;
             color: #555;
             margin-bottom: 5px;
+            width: 30vw;
         }
 
         .hostel-card .btn {
@@ -68,14 +70,18 @@
             background-color: #f8f9fa;
         }
 
-        .bar-bg {
-            background-color: #343a40;
-        }
+       
 
         .brand {
-            font-family: 'Roboto', sans-serif;
-            font-size: 2rem;
-            font-weight: bold;
+        font-size: 48px;
+        font-family: 'Playfair Display', serif;
+        font-weight: bolder;
+        cursor: pointer;
+        
+        }
+        .heady{
+            text-align:center ;
+            margin-top: 150px;
         }
 
         .para {
@@ -116,10 +122,10 @@
     </section>
 
     <!-- Main Content -->
-    <div class="container d-flex flex-column justify-content-center align-items-center min-vh-100">
+    <div class="container  d-flex flex-column justify-content-center align-items-center min-vh-100">
         <div class="column">
             <div class="col-12 justify-content-center">
-                <div style="text-align:center">
+                <div class="heady">
                     <h1>Find Your Perfect Stay</h1>
                     <p class="para" style="font-size: 18px;">“Search for hostels and PGs near you!”</p>
                 </div>
@@ -139,7 +145,7 @@
 
             <!-- Hostel List -->
             <div class="col-12 justify-content-center">
-                <div id="hostel-list">
+                <div class="" id="hostel-list">
                     <!-- Annex Hostel -->
                     <div class="hostel-card" onclick="window.location.href='/annex'">
                         <div class="row">
