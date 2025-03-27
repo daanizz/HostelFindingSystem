@@ -68,6 +68,7 @@
                                     <td>
                                         <form method="POST" action="/admin/updateStatus" class="status-form">
                                             <input type="hidden" name="reservationID" value="<%= reservation.reservationID %>">
+                                            <input type="hidden" name="hostelId" value="<%= reservation.hostelId %>">
                                             <select class="form-control status-select" name="status" onchange="this.form.submit()">
                                                 <option value="pending" <%= reservation.status === 'pending' ? 'selected' : '' %>>Pending</option>
                                                 <option value="confirmed" <%= reservation.status === 'confirmed' ? 'selected' : '' %>>Confirmed</option>

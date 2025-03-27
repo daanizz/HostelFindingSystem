@@ -43,11 +43,36 @@ exports.deleteHostel = async (req, res) => {
 };
 
 exports.updateStatus = async (req, res) => {
-    const { reservationID, status } = req.body;
+    const { reservationID, status, hostelId } = req.body;
     try {
+        // Update reservation status
         await Reservation.updateOne({ reservationID }, { status });
-        res.redirect('/admin/getReserves'); // Redirect back to the same page to reflect changes
-    } catch (error) {
+
+        if (status === 'confirmed') {
+            // Find hostel by numeric ID
+            console.log('Searching for hostel with ID:', hostelId);
+            
+            const hostel = await Hostel.findOne({ 
+                hostelID: Number(hostelId) 
+            });
+
+            console.log('Found hostel:', hostel); 
+
+            if (!hostel) {
+                return res.status(404).send("No Hostel found");
+            }
+
+            if (hostel.numberOfRooms <= 0) {
+                return res.status(400).send("No rooms available");
+            }
+
+            // Decrement room count
+            hostel.numberOfRooms -= 1;
+            await hostel.save();
+        }
+        return res.redirect('/admin/getReserves');
+    }
+        catch (error) {
         res.status(500).send('Error updating status: ' + error.message);
         res.redirect('/admin/getReserves'); 
     }
