@@ -86,6 +86,16 @@ exports.deleteReservation = async (req, res) => {
         if (!deletedReservation) {
             return res.status(404).json({ message: "Reservation not found" });
         }
+
+        const { hostelId } = req.body;
+
+        const hostel = await Hostel.findOne({ 
+            hostelID: Number(hostelId) 
+        });
+
+        hostel.numberOfRooms += 1;
+            await hostel.save();
+
         // req.flash("success", "Hostel deleted successfully!"); // Flash message for success
         res.redirect('/admin/getReserves');
     } catch (error) {

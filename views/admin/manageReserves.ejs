@@ -67,17 +67,22 @@
                                     <td><%= reservation.reservationdate.toLocaleDateString() %></td>
                                     <td>
                                         <form method="POST" action="/admin/updateStatus" class="status-form">
-                                            <input type="hidden" name="reservationID" value="<%= reservation.reservationID %>">
-                                            <input type="hidden" name="hostelId" value="<%= reservation.hostelId %>">
+                                          <input type="hidden" name="reservationID" value="<%= reservation.reservationID %>">
+                                          <input type="hidden" name="hostelId" value="<%= reservation.hostelId %>">
+                                          <% if (reservation.status === 'confirmed') { %>
+                                            <span>Confirmed</span>
+                                            <input type="hidden" name="status" value="confirmed">
+                                          <% } else { %>
                                             <select class="form-control status-select" name="status" onchange="this.form.submit()">
-                                                <option value="pending" <%= reservation.status === 'pending' ? 'selected' : '' %>>Pending</option>
-                                                <option value="confirmed" <%= reservation.status === 'confirmed' ? 'selected' : '' %>>Confirmed</option>
-                                                <option value="cancelled" <%= reservation.status === 'cancelled' ? 'selected' : '' %>>Cancelled</option>
+                                              <option value="">Select action</option>
+                                              <option value="confirmed">Confirm</option>
                                             </select>
+                                          <% } %>
                                         </form>
-                                    </td>
+                                      </td>
                                     <td>
                                         <form action="/admin/deleteRes/<%= reservation._id %>" onclick="return confirm('Are you sure you want to delete this Reservation Details?');" method="POST">
+                                            <input type="hidden" name="hostelId" id="hostelId" value="101">
                                             <button type="submit" style="background-color: red; color:#fff">Delete</button>
                                         </form>
                                     </td>
