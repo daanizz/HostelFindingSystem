@@ -19,14 +19,18 @@ exports.reserve= async (req,res) => {
         });
 
         await newres.save();
+
+        req.session.reservationAlert = 'Reservation created successfully!';
         res.redirect('/annex');
-
-        
-
         }
         catch (error) {
             console.error('Reservation error:', error);
+            if (error.code === 11000 && error.keyPattern.userId && error.keyPattern.hostelId) {
+                req.session.reservationAlert = 'You already have a reservation for Annex hostel!';
+            } else {
+                req.session.reservationAlert = 'Error creating reservation. Please try again.';
+            }
             res.redirect('/annex');
-            res.status(500).send('Error creating reservation');
+            // res.status(500).send('Error creating reservation');
         }
     }

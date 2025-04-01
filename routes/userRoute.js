@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const userController = require('../controllers/userController');
 const reserveController = require('../controllers/reserveController');
+const { render } = require('ejs');
 
 // Homepage route
 router.get('/', userController.getHomepage);
@@ -11,6 +12,10 @@ router.get('/search', userController.getSearchPage);
 
 // Annex Hostel page route
 router.get('/annex', userController.getAnnexPage);
+
+router.get('/homepage', async (req, res) => {
+    res.render('homepage');
+});
 
 // Taibha Hostel page route
 router.get('/taibha', userController.getTaibhaPage);

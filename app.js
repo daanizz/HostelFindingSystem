@@ -41,6 +41,12 @@ app.use(session({
   cookie: { secure: false, maxAge: 24 * 60 * 60 * 1000 } // 24 hours
 }));
 
+app.use((req, res, next) => {
+  res.locals.reservationAlert = req.session.reservationAlert;
+  delete req.session.reservationAlert;
+  next();
+});
+
 // Middleware to populate req.user for authenticated requests
 app.use((req, res, next) => {
   if (req.session.user) {

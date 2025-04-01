@@ -12,4 +12,6 @@ const reservationSchema = new mongoose.Schema({
     }
 });
 
+reservationSchema.index({ userId: 1, hostelId: 1 }, { unique: true });
+
 module.exports = mongoose.model("Reservation", reservationSchema);

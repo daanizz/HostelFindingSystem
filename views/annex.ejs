@@ -20,7 +20,7 @@
     <div>
         <nav class="navbar navbar-expand-lg navbar-light bar-bg fixed-top">
             <div class="container">
-                <a class="navbar-brand" href="homepage.ejs">
+                <a class="navbar-brand" href="/homepage">
                    <h1 class="brand"><span style="color: red;">Stay</span><span style="color: royalblue;">Spot</span></h1>
                 </a>
                 <button style="background-color:#fff;" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -28,14 +28,14 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div style="padding: 10px;" class="navbar-nav">
-                        <a class="nav-link active" id="navItem1" href="homepage.ejs">
+                        <a class="nav-link active" id="navItem1" href="/homepage">
                             <span style="padding-left: 10px;padding-right: 10px; color:#fff; font-family:Roboto; font-weight:600; font-size: 18px;">Home</span>
                             <span class="sr-only">(current)</span>
                         </a>
-                        <a style="padding-left: 10px; padding-right: 10px; color:#fff; font-family:Roboto; font-size: 18px; font-weight:600;" class="nav-link" href="#exploreMenuSection" id="navItem2">My Reserves</a>
-                        <a style="padding-left: 10px; padding-right: 10px; color:#fff; font-family:Roboto; font-size: 18px; font-weight:600;" class="nav-link" href="#deliveryPaymentSection" id="navItem3">Search</a>
-                        <a style="padding-left: 10px;padding-right: 10px; color:#fff; font-family:Roboto; font-size: 18px; font-weight:600;" class="nav-link" href="login.ejs" id="navItem4">Login</a>
-                        <a style="padding-left: 10px; padding-right: 10px; color:#fff; font-family:Roboto; font-size: 18px; font-weight:600;" class="nav-link" href="contactus.ejs" id="navItem4">Contacts us</a>
+                        <a style="padding-left: 10px; padding-right: 10px; color:#fff; font-family:Roboto; font-size: 18px; font-weight:600;" class="nav-link" href="/my-reserves" id="navItem2">My Reserves</a>
+                        <a style="padding-left: 10px; padding-right: 10px; color:#fff; font-family:Roboto; font-size: 18px; font-weight:600;" class="nav-link" href="/search" id="navItem3">Search</a>
+                        <!-- <a style="padding-left: 10px;padding-right: 10px; color:#fff; font-family:Roboto; font-size: 18px; font-weight:600;" class="nav-link" href="/login.ejs" id="navItem4">Login</a> -->
+                        <a style="padding-left: 10px; padding-right: 10px; color:#fff; font-family:Roboto; font-size: 18px; font-weight:600;" class="nav-link" href="/contact-us" id="navItem4">Contacts us</a>
                     </div>
                 </div>
             </div>
@@ -187,5 +187,11 @@
       </div>
     </div>
   </div>
+
+  <% if (reservationAlert) { %>
+    <script>
+      alert('<%= reservationAlert %>');
+    </script>
+  <% } %>
   </body>
   </html>
