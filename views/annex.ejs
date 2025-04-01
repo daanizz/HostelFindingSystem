@@ -11,6 +11,18 @@
     <title>Annex V Hostel</title>
   </head>
   <body>
+
+    <% if (message) { %>
+        <div class="alert alert-info" style="position: fixed; top: 70px; right: 20px; z-index: 1000;">
+            <%= message %>
+        </div>
+        <script>
+            setTimeout(() => {
+                document.querySelector('.alert').remove();
+            }, 3000);
+        </script>
+    <% } %>
+
     <!-- Hidden element to store hostelID -->
     <div id="hostelID" data-hostel-id="<%= hostelID %>"></div>
 
@@ -115,11 +127,21 @@
                 </div>
             </div>
 
-            <div style="text-align:center;">
+            <!-- <div style="text-align:center;">
                 <form id="reservationForm" action="/reserv" method="POST">
                     <input type="hidden" name="hostelId" id="hostelId" value="101">
                     <button type="button" class="add-todo-button2" id="addTodoButton2">Reserve a room</button>
                 </form>
+            </div> -->
+            <div style="text-align:center;">
+                <% if (!userHasReservation) { %>
+                    <form id="reservationForm" action="/reserv" method="POST">
+                        <input type="hidden" name="hostelId" id="hostelId" value="101">
+                        <button type="button" class="add-todo-button2" id="addTodoButton2">Reserve a room</button>
+                    </form>
+                <% } else { %>
+                    <p class="reservation-message">You already have a reservation in this hostel</p>
+                <% } %>
             </div>
 
             <!-- Reviews and Ratings Section -->
@@ -173,6 +195,8 @@
         document.getElementById("addTodoButton2").addEventListener("click", function() {
             let confirmation = confirm("Confirm reservation?");
             if (confirmation) {
+                this.disabled = true;
+                this.textContent = "Processing...";
                 document.getElementById("reservationForm").submit();
             }
         });
@@ -188,4 +212,6 @@
     </div>
   </div>
   </body>
+
+  
   </html>

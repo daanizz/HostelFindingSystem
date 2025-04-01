@@ -396,6 +396,15 @@ button:focus {
     border-radius: 4px;
     cursor: pointer;
   }
+
+  .reservation-message {
+    color: #fff;
+    font-size: 18px;
+    padding: 10px;
+    background-color: #ff4444;
+    border-radius: 5px;
+    display: inline-block;
+}
   
   #confirmDelete {
     background-color: #ff4d4d; /* Red for delete */
