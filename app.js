@@ -70,6 +70,7 @@ app.set('views', path.join(__dirname, 'views')); // Specify the views directory
 
 // Mount routes
 app.use('/', authRoute); // Mount authRoute at the root
+
 app.use('/admin', adminRoute); // Mount adminRoute at /admin
 app.use('/', userRoute); // Mount userRoute at the root
 app.use('/reviews', require('./routes/reviewRoutes'));

@@ -19,6 +19,7 @@ const getTaibhaPage = (req, res) => {
 };
 
 const getMyReservesPage = (req, res) => {
+    const user = req.user || null;
     res.render('myReserves'); // Renders MyReservation.ejs
 };
 
