@@ -9,6 +9,7 @@ router.get('/', userController.getHomepage);
 
 // Search page route
 router.get('/search', userController.getSearchPage);
+router.get('/searchfind', userController.searchHostels);
 
 // Annex Hostel page route
 router.get('/annex', userController.getAnnexPage);
@@ -31,5 +32,7 @@ router.get('/contact-us', userController.getContactUsPage);
 
 // Route to handle reservation
 router.post('/reserv', reserveController.reserve);
+
+router.post('/cancel-reservation', userController.cancelReservation);
 
 module.exports = router;

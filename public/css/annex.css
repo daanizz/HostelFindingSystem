@@ -18,6 +18,8 @@
     z-index: 1000;
 }
 
+
+
 .brand {
     font-size: 48px;
     font-family: 'Playfair Display', serif;
@@ -79,6 +81,8 @@ button, li, p, h1, h2, h3, h4, h5, h6 {
     width: 33%;
     border-width: 0;
     border-radius: 8px;
+    cursor: pointer; /* Add pointer cursor */
+    transition: background-color 0.3s ease; /* Smooth transition */
 }
 
 button:focus {
@@ -86,7 +90,10 @@ button:focus {
 }
 
 .selected-button {
+    border-radius: 10%;
+    border-color: none;
     background-color: red;
+    /* color: white; */
     width: 33%;
 }
 
@@ -314,6 +321,17 @@ button:focus {
     color: #333; /* Dark text for better readability */
     margin-bottom: 10px;
     font-weight: 500; /* Slightly bold for emphasis */
+}
+
+.tabs-container .tab-content {
+    color: #fff;
+    font-family: "Roboto";
+    font-size: 15px;
+}
+
+
+.d-none {
+    display: none !important;
 }
 
 /* Style for the stars container */

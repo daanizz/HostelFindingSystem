@@ -4,58 +4,72 @@ const dotenv = require('dotenv');
 const connectDB = require('./config/db');
 const bodyParser = require('body-parser');
 const path = require('path');
+// const flash = require('connect-flash');
 
 // Initialize Express app
 const app = express();
+
 // Import routes
 const authRoute = require('./routes/authRoutes');
+const hostelRoute = require('./routes/hostelRoutes');
 const adminRoute = require('./routes/adminRoutes');
-const userRoute = require('./routes/userRoute'); // Import userRoute
+const userRoute = require('./routes/userRoute');
+const reviewRoutes = require('./routes/reviewRoutes');
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
-
-const cors = require('cors'); // Import cors
+const cors = require('cors');
+const helmet = require('helmet');
+const mongoSanitize = require('express-mongo-sanitize');
 
 // CORS configuration
 app.use(cors({
-  origin: 'http://localhost:3000', // Replace with your frontend domain
-  credentials: true // Allow cookies to be sent
+  origin: 'http://localhost:3000',
+  credentials: true
 }));
 
 // Load environment variables
 dotenv.config();
 
+// app.use(flash());
+
 // Connect to MongoDB
 mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log('MongoDB Connected'))
   .catch(err => console.error('MongoDB connection error:', err));
-// // Connect to MongoDB
-// connectDB();
 
 // Session middleware
 app.use(session({
-  secret: 'your-secret-key',
+  secret: process.env.SESSION_SECRET || 'your-secret-key',
   resave: false,
   saveUninitialized: false,
-  store: MongoStore.create({ mongoUrl: process.env.MONGO_URI }), // Use MongoDB as the session store
-  cookie: { secure: false, maxAge: 24 * 60 * 60 * 1000 } // 24 hours
+  store: MongoStore.create({ mongoUrl: process.env.MONGO_URI }),
+  cookie: { 
+    secure: process.env.NODE_ENV === 'production',
+    maxAge: 24 * 60 * 60 * 1000
+  }
 }));
 
+
+
+// Security middleware
+app.use(helmet());
+app.use(mongoSanitize());
+
+// Custom middleware
 app.use((req, res, next) => {
   res.locals.reservationAlert = req.session.reservationAlert;
   delete req.session.reservationAlert;
   next();
 });
 
-// Middleware to populate req.user for authenticated requests
 app.use((req, res, next) => {
   if (req.session.user) {
-    req.user = req.session.user; // Populate req.user from session
+    req.user = req.session.user;
   }
   next();
 });
 
-// Middleware
+// Body parsing middleware
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(express.json());
@@ -64,20 +78,41 @@ app.use(express.urlencoded({ extended: true }));
 // Serve static files
 app.use(express.static('public'));
 
-// Set EJS as the view engine
+// View engine setup
 app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, 'views')); // Specify the views directory
+app.set('views', path.join(__dirname, 'views'));
 
-// Mount routes
-app.use('/', authRoute); // Mount authRoute at the root
+// Routes
+app.use('/', authRoute);
+app.use('/admin', adminRoute);
+app.use('/', userRoute);
+app.use('/reviews', reviewRoutes);
+app.use('/hostel', hostelRoute);
 
-app.use('/admin', adminRoute); // Mount adminRoute at /admin
-app.use('/', userRoute); // Mount userRoute at the root
-app.use('/reviews', require('./routes/reviewRoutes'));
 
-// Start the server
+
+// Add logout route directly to app
+app.post('/logout', (req, res) => {
+  req.session.destroy(err => {
+    if (err) {
+      console.error('Error destroying session:', err);
+      return res.status(500).send('Logout failed');
+    }
+    res.redirect('/login');
+  });
+});
+
+// Error handling middleware
+// app.use((err, req, res, next) => {
+//   console.error(err.stack);
+//   res.status(500).render('error', { 
+//     error: process.env.NODE_ENV === 'development' ? err : 'Something went wrong!' 
+//   });
+// });
+
+// Start server
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
-    console.log(`Open your browser and visit: http://localhost:${PORT}`);
+  console.log(`Server running on port ${PORT}`);
+  console.log(`Open your browser and visit: http://localhost:${PORT}`);
 });

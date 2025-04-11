@@ -11,7 +11,7 @@ exports.login = async (req, res) => {
     const user = await User.findOne({ email });
     if (!user) {
       console.log('Incorrect user');
-      return res.render('login'); // Stay on login page
+      return res.redirect('/login'); // Stay on login page
     }
 
     // Log the stored hash and input password
@@ -25,7 +25,7 @@ exports.login = async (req, res) => {
 
     if (!isMatch) {
       console.log('Incorrect password');
-      return res.render('login'); // Stay on login page
+      return res.redirect('/login'); // Stay on login page
     }
 
     // Set user information in the session

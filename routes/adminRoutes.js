@@ -2,7 +2,11 @@ const express = require('express');
 const adminController = require('../controllers/adminController');
 const router = express.Router();
 
-router.post('/addHostel', adminController.addHostel); // POST request for adding Hostel
+const upload = require('../config/multer'); // Import multer configuration
+
+router.post('/addHostel', upload, adminController.addHostel); // Use upload as middleware
+
+// router.post('/addHostel', adminController.addHostel); // POST request for adding Hostel
 router.get('/getHostel', adminController.getHostel);
 router.get('/getReserves', adminController.getReserves);
 router.post('/updateStatus', adminController.updateStatus);

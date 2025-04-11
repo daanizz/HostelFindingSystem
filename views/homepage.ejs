@@ -39,13 +39,15 @@
     <!-- Main Content -->
     <div class="container d-flex flex-column justify-content-center align-items-center min-vh-100">
         <div class="text-center">
-            <h1 style="color: #fff;">India's Top App for Finding Hostels & PGs!</h1>
+            <h1 style="color: #000000;">India's Top App for Finding Hostels & PGs!</h1>
             <p class="para" style="font-size: 18px;">“Find your stay, your way!”</p>
             
             <!-- Search and LogOut Buttons -->
             <div class="mt-4">
                 <a href="/search" style="background-color: #fff;color:royalblue" class="btn btn-primary btn-lg">Search</a>
-                <button class="btn btn-danger btn-lg ml-3" style="background-color: #fff;color:red" onclick="window.location.href='/login'">LogOut</button>
+                <form action="/logout" method="POST" class="d-inline ml-3">
+                    <button type="submit" class="btn btn-danger btn-lg" style="background-color: #fff;color:red">LogOut</button>
+                </form>
             </div>
         </div>
     </div>
