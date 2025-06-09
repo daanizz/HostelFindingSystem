@@ -22,11 +22,23 @@ const helmet = require('helmet');
 const mongoSanitize = require('express-mongo-sanitize');
 
 // CORS configuration
+// Update CORS configuration
+const allowedOrigins = process.env.NODE_ENV === 'production' 
+  ? ['https://your-render-app-url.onrender.com', 'https://yourdomain.com']
+  : ['http://localhost:3000'];
+
 app.use(cors({
-  origin: 'http://localhost:3000',
+  origin: function(origin, callback) {
+    // Allow requests with no origin (like mobile apps or curl requests)
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.indexOf(origin) === -1) {
+      const msg = 'The CORS policy for this site does not allow access from the specified Origin.';
+      return callback(new Error(msg), false);
+    }
+    return callback(null, true);
+  },
   credentials: true
 }));
-
 // Load environment variables
 dotenv.config();
 
@@ -38,16 +50,28 @@ mongoose.connect(process.env.MONGO_URI)
   .catch(err => console.error('MongoDB connection error:', err));
 
 // Session middleware
+// Update your session configuration
 app.use(session({
   secret: process.env.SESSION_SECRET || 'your-secret-key',
   resave: false,
   saveUninitialized: false,
-  store: MongoStore.create({ mongoUrl: process.env.MONGO_URI }),
+  store: MongoStore.create({ 
+    mongoUrl: process.env.MONGO_URI,
+    ttl: 14 * 24 * 60 * 60 // 14 days
+  }),
   cookie: { 
-    secure: process.env.NODE_ENV === 'production',
-    maxAge: 24 * 60 * 60 * 1000
+    secure: process.env.NODE_ENV === 'production', // true in production
+    httpOnly: true,
+    sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
+    maxAge: 24 * 60 * 60 * 1000,
+    domain: process.env.NODE_ENV === 'production' ? '.yourdomain.com' : undefined
   }
 }));
+
+// Add trust proxy for production
+if (process.env.NODE_ENV === 'production') {
+  app.set('trust proxy', 1);
+}
 
 
 
@@ -76,7 +100,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Serve static files
-app.use(express.static('public'));
+// app.use(express.static('public'));
+// // Update static file serving
+app.use(express.static(path.join(__dirname, 'public'), {
+  maxAge: process.env.NODE_ENV === 'production' ? '1y' : '0'
+}));
 
 // View engine setup
 app.set('view engine', 'ejs');
