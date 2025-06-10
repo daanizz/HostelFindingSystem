@@ -26,10 +26,21 @@ const cors = require('cors');
 const helmet = require('helmet');
 const mongoSanitize = require('express-mongo-sanitize');
 
-if (process.env.NODE_ENV === 'production') {
-  app.set('trust proxy', 1);
-}
+// if (process.env.NODE_ENV === 'production') {
+//   app.set('trust proxy', 1);
+// }
 
+// At the top of your app.js, after creating express app
+if (process.env.NODE_ENV === 'production') {
+  app.set('trust proxy', 1); // Trust first proxy
+  app.use((req, res, next) => {
+    if (req.secure) {
+      next();
+    } else {
+      res.redirect('https://' + req.headers.host + req.url);
+    }
+  });
+}
 
 // CORS configuration
 // app.use(cors({
@@ -39,12 +50,17 @@ if (process.env.NODE_ENV === 'production') {
 
 app.use(cors({
   origin: process.env.NODE_ENV === 'production' 
-    ? [PRODUCTION_URL, `https://www.${PRODUCTION_DOMAIN}`]
+    ? [
+        'https://yourdomain.com',
+        'https://www.yourdomain.com',
+        'https://yourapp.onrender.com' // Your Render URL
+      ]
     : 'http://localhost:3000',
   credentials: true,
-  exposedHeaders: ['set-cookie']
+  exposedHeaders: ['set-cookie'],
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With']
 }));
-
 // app.use(cors({
 //   origin: process.env.NODE_ENV === 'production' 
 //     ? [PRODUCTION_URL, `https://www.${PRODUCTION_DOMAIN}`]
@@ -111,21 +127,25 @@ mongoose.connect(process.env.MONGO_URI)
 //   }
 // }));
 
+// Enhanced session configuration
 app.use(session({
-  secret: process.env.SESSION_SECRET || 'your-secret-key',
+  secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: false,
-  store: MongoStore.create({ 
+  store: MongoStore.create({
     mongoUrl: process.env.MONGO_URI,
-    ttl: 14 * 24 * 60 * 60
+    ttl: 14 * 24 * 60 * 60,
+    autoRemove: 'native'
   }),
-  cookie: { 
+  cookie: {
     secure: process.env.NODE_ENV === 'production',
     httpOnly: true,
     sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
     maxAge: 24 * 60 * 60 * 1000,
-    domain: process.env.NODE_ENV === 'production' ? PRODUCTION_DOMAIN : undefined
-  }
+    domain: process.env.NODE_ENV === 'production' ? '.yourdomain.com' : undefined,
+    path: '/'
+  },
+  proxy: true // Trust the reverse proxy
 }));
 
 
@@ -193,6 +213,16 @@ app.use('/', userRoute);
 app.use('/reviews', reviewRoutes);
 app.use('/hostel', hostelRoute);
 
+// Add this route for debugging
+app.get('/session-check', (req, res) => {
+  console.log('Session check:', req.session);
+  res.json({
+    sessionExists: !!req.session,
+    user: req.session?.user,
+    cookies: req.headers.cookie,
+    headers: req.headers
+  });
+});
 
 
 // Add logout route directly to app
