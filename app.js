@@ -41,8 +41,16 @@ app.use(cors({
   origin: process.env.NODE_ENV === 'production' 
     ? [PRODUCTION_URL, `https://www.${PRODUCTION_DOMAIN}`]
     : 'http://localhost:3000',
-  credentials: true
+  credentials: true,
+  exposedHeaders: ['set-cookie']
 }));
+
+// app.use(cors({
+//   origin: process.env.NODE_ENV === 'production' 
+//     ? [PRODUCTION_URL, `https://www.${PRODUCTION_DOMAIN}`]
+//     : 'http://localhost:3000',
+//   credentials: true
+// }));
 
 
 // Load environment variables
@@ -86,6 +94,23 @@ mongoose.connect(process.env.MONGO_URI)
 // }));
 
 // Session middleware with explicit settings
+// app.use(session({
+//   secret: process.env.SESSION_SECRET || 'your-secret-key',
+//   resave: false,
+//   saveUninitialized: false,
+//   store: MongoStore.create({ 
+//     mongoUrl: process.env.MONGO_URI,
+//     ttl: 14 * 24 * 60 * 60
+//   }),
+//   cookie: { 
+//     secure: process.env.NODE_ENV === 'production',
+//     httpOnly: true,
+//     sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
+//     maxAge: 24 * 60 * 60 * 1000,
+//     domain: process.env.NODE_ENV === 'production' ? PRODUCTION_DOMAIN : undefined
+//   }
+// }));
+
 app.use(session({
   secret: process.env.SESSION_SECRET || 'your-secret-key',
   resave: false,
@@ -102,6 +127,7 @@ app.use(session({
     domain: process.env.NODE_ENV === 'production' ? PRODUCTION_DOMAIN : undefined
   }
 }));
+
 
 // After session middleware
 const passport = require('./config/auth');
@@ -126,6 +152,13 @@ app.use((req, res, next) => {
 app.use((req, res, next) => {
   if (req.session.user) {
     req.user = req.session.user;
+  }
+  next();
+});
+
+app.use((req, res, next) => {
+  if (req.session.user) {
+    res.locals.user = req.session.user;
   }
   next();
 });

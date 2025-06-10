@@ -106,11 +106,14 @@ router.get('/:id', async (req, res) => {
         }
         
         let hasActiveReservation = false;
+        let user = null;
+        
         if (req.session.user) {
+            user = req.session.user;
             const reservation = await Reservation.findOne({
-                userId: req.session.user._id,
+                userId: user._id,
                 hostelId: hostelID,
-                status: { $in: ['pending', 'confirmed'] } // Only check active reservations
+                status: { $in: ['pending', 'confirmed'] }
             });
             hasActiveReservation = !!reservation;
         }
@@ -118,7 +121,7 @@ router.get('/:id', async (req, res) => {
         res.render('annex', {
             hostelID: hostelID,
             hostel: hostel,
-            user: req.session.user || null,
+            user: user, // Explicitly pass user or null
             hasReservation: hasActiveReservation,
             alertMessage: req.session.alertMessage || null
         });
@@ -132,5 +135,56 @@ router.get('/:id', async (req, res) => {
         res.redirect('/homepage');
     }
 });
+
+// router.get('/:id', async (req, res) => {
+//     try {
+//         const hostelID = req.params.id;
+//         const hostel = await Hostel.findOne({ hostelID: hostelID });
+        
+//         if (!hostel) {
+//             req.session.alertMessage = "Hostel not found!";
+//             return res.redirect('/homepage');
+//         }
+        
+//         // Handle default images
+//         if (!hostel.images || !Array.isArray(hostel.images)) {
+//             hostel.images = [
+//                 '/images/default1.jpg',
+//                 '/images/default2.jpg',
+//                 '/images/default3.jpg'
+//             ];
+//         } else if (hostel.images.length < 3) {
+//             while (hostel.images.length < 3) {
+//                 hostel.images.push('/images/default' + (hostel.images.length + 1) + '.jpg');
+//             }
+//         }
+        
+//         let hasActiveReservation = false;
+//         if (req.session.user) {
+//             const reservation = await Reservation.findOne({
+//                 userId: req.session.user._id,
+//                 hostelId: hostelID,
+//                 status: { $in: ['pending', 'confirmed'] } // Only check active reservations
+//             });
+//             hasActiveReservation = !!reservation;
+//         }
+        
+//         res.render('annex', {
+//             hostelID: hostelID,
+//             hostel: hostel,
+//             user: req.session.user || null,
+//             hasReservation: hasActiveReservation,
+//             alertMessage: req.session.alertMessage || null
+//         });
+        
+//         // Clear the alert message after displaying it
+//         req.session.alertMessage = null;
+        
+//     } catch (error) {
+//         console.error('Error fetching hostel details:', error);
+//         req.session.alertMessage = "Error loading hostel details";
+//         res.redirect('/homepage');
+//     }
+// });
 
 module.exports = router;
