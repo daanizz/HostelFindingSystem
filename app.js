@@ -9,6 +9,11 @@ const path = require('path');
 // Initialize Express app
 const app = express();
 
+
+// Update these values with your actual production domain
+const PRODUCTION_DOMAIN = 'your-actual-domain.com'; // Replace this!
+const PRODUCTION_URL = `https://${PRODUCTION_DOMAIN}`;
+
 // Import routes
 const authRoute = require('./routes/authRoutes');
 const hostelRoute = require('./routes/hostelRoutes');
@@ -31,9 +36,10 @@ if (process.env.NODE_ENV === 'production') {
 //   origin: 'http://localhost:3000',
 //   credentials: true
 // }));
+
 app.use(cors({
   origin: process.env.NODE_ENV === 'production' 
-    ? ['https://your-frontend-domain.com', 'https://www.your-frontend-domain.com']
+    ? [PRODUCTION_URL, `https://www.${PRODUCTION_DOMAIN}`]
     : 'http://localhost:3000',
   credentials: true
 }));
@@ -60,20 +66,40 @@ mongoose.connect(process.env.MONGO_URI)
 //     maxAge: 24 * 60 * 60 * 1000
 //   }
 // }));
+
+
+// app.use(session({
+//   secret: process.env.SESSION_SECRET || 'your-secret-key',
+//   resave: false,
+//   saveUninitialized: false,
+//   store: MongoStore.create({ 
+//     mongoUrl: process.env.MONGO_URI,
+//     ttl: 14 * 24 * 60 * 60 // = 14 days
+//   }),
+//   cookie: { 
+//     secure: process.env.NODE_ENV === 'production', // should be true in production
+//     httpOnly: true,
+//     sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
+//     maxAge: 24 * 60 * 60 * 1000,
+//     domain: process.env.NODE_ENV === 'production' ? '.yourdomain.com' : undefined
+//   }
+// }));
+
+// Session middleware with explicit settings
 app.use(session({
   secret: process.env.SESSION_SECRET || 'your-secret-key',
   resave: false,
   saveUninitialized: false,
   store: MongoStore.create({ 
     mongoUrl: process.env.MONGO_URI,
-    ttl: 14 * 24 * 60 * 60 // = 14 days
+    ttl: 14 * 24 * 60 * 60
   }),
   cookie: { 
-    secure: process.env.NODE_ENV === 'production', // should be true in production
+    secure: process.env.NODE_ENV === 'production',
     httpOnly: true,
     sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
     maxAge: 24 * 60 * 60 * 1000,
-    domain: process.env.NODE_ENV === 'production' ? '.yourdomain.com' : undefined
+    domain: process.env.NODE_ENV === 'production' ? PRODUCTION_DOMAIN : undefined
   }
 }));
 
@@ -116,6 +142,16 @@ app.use(express.static('public'));
 // View engine setup
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
+
+app.use((req, res, next) => {
+  console.log('Session Debug:', {
+    sessionID: req.sessionID,
+    session: req.session,
+    cookies: req.headers.cookie,
+    user: req.user
+  });
+  next();
+});
 
 // Routes
 app.use('/', authRoute);
